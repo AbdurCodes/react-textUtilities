@@ -1,5 +1,5 @@
 import './App.css';
-import FormControl from './componenets/TextForm';
+import TextForm from './componenets/TextForm';
 import Navbar from './componenets/Navbar';
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
     <>
     <Navbar title={"TextUtilities"} about={"About Us"}/>
     {/* <Navbar myDict={{title: 'TextUtilities', about: 'About Us'}} /> */}
-    <FormControl title="Enter your text below to analyze..."/>
+    <TextForm title="Enter your text below to analyze..."/>
 
     </>
   );

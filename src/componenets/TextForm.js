@@ -1,14 +1,14 @@
 import React, {useState} from "react";
-const allStates = [];
+
 function TextForm(props) {
   // array destructuring
   // The useState hook returns an array with two elements: the current state value and a function to update that value
   const [text, setText] = useState("");
   // const [text, setText] = useState("Enter your text here");
   // text is state variable having default value of "Enter your text" which can be updated with setText
+  const [history, setHistory] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(-1);
 
-  
-  allStates.push(text);
 
 
   const handleUC = () => {
@@ -41,29 +41,38 @@ function TextForm(props) {
     setText("");
   }
 
+  
   const handleUndo = () => {
-    allStates.pop()
-    setText(allStates[-1])
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+      setText(history[currentIndex - 1]);
+    }
   }
 
   const handleRedo = () => {
-    setText(text);
+    if (currentIndex < history.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+      setText(history[currentIndex + 1]);
+    }
   }
 
   const handleOChnage = (eventObject)=>{
-    setText(eventObject.target.value);
+    const newText = eventObject.target.value;
+    setText(newText);
+    setHistory([...history.slice(0, currentIndex + 1), text]);
+    setCurrentIndex(currentIndex + 1);
     // eventObject is the event object passed to the function
     // eventObject.target represents the DOM element that triggered the event. In this case, it's the textarea element
     // eventObject.target.value retrieves the current value of the textarea
+    
   }
-
   return (
     <>
     <div className="mb-3 mt-4 container">
       <h3 style={{display: "inline"}}>{props.title}</h3>
       <button className="mx-2 my-2" onClick={handleClear}>Clear text</button>
       <button className="mx-2 my-2" onClick={handleUndo}>Undo</button>
-      <button className="mx-2 my-2" onClick={handleRedo}>Redo</button>
+      <button className="mx-2 my-2 redo-button" onClick={handleRedo}>Redo</button>
       <textarea
         className="form-control" 
         id="textBox"  
@@ -88,6 +97,7 @@ function TextForm(props) {
     </div>
     </>
   );
+  
 }
 
 export default TextForm;
