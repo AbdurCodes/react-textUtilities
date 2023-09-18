@@ -3,11 +3,11 @@ import React, {useState} from "react";
 function TextForm(props) {
   // array destructuring
   // The useState hook returns an array with two elements: the current state value and a function to update that value
-  const [text, setText] = useState("");
+  const [text, setText] = useState(""); // initial text is ""
   // const [text, setText] = useState("Enter your text here");
   // text is state variable having default value of "Enter your text" which can be updated with setText
-  const [history, setHistory] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(-1);
+  const [history, setHistory] = useState([]); // initial history is []
+  const [currentIndex, setCurrentIndex] = useState(-1); // initial currentIndex is -1
 
 
 
