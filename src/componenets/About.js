@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function About() {
+export default function About(props) {
 
   const [changeTheme, setTheme] = useState({
     color: "black",
@@ -34,7 +34,7 @@ export default function About() {
     <>
     
     <div className="container mt-5">
-    <h2 id="aboutUs">About Us</h2>
+    <h2 className={`text-${props.textColor}`} id="aboutUs">About Us</h2>
       <div className="accordion" id="accordionExample" >
         <div className="accordion-item" style={changeTheme}>
           <h2 className="accordion-header">
@@ -132,7 +132,7 @@ export default function About() {
       </div>
     </div>
     <div className="container">
-      <button type="button" onClick={toggleTheme} class="btn btn-primary my-2 mb-5" >{btnText}</button>
+      <button type="button" onClick={toggleTheme} className="btn btn-primary my-2 mb-5" >{btnText}</button>
     </div>
     </>
   );

@@ -56,6 +56,16 @@ function TextForm(props) {
     }
   }
 
+  const handleCopy = () => {
+    navigator.clipboard.writeText(text);
+  }
+
+  const RemExtraSpaces = () => {
+    const regexPattern = /[ ]+/g;
+    const newText = text.split(regexPattern);
+    setText(newText.join(" "));
+  }
+
   const handleOChnage = (eventObject)=>{
     const newText = eventObject.target.value;
     setText(newText);
@@ -69,12 +79,14 @@ function TextForm(props) {
   return (
     <>
     <div className="mb-3 mt-4 container">
-      <h3 style={{display: "inline"}}>{props.title}</h3>
+      <h3 className={`text-${props.textColor}`} style={{display: "inline"}}>{props.title}</h3>
       <button className="mx-2 my-2" onClick={handleClear}>Clear text</button>
       <button className="mx-2 my-2" onClick={handleUndo}>Undo</button>
       <button className="mx-2 my-2 redo-button" onClick={handleRedo}>Redo</button>
       <textarea
-        className="form-control" 
+      focused
+      className="form-control"
+        style={props.mode === 'dark' ? {backgroundColor: 'rgb(70 70 156)', color: 'white'} : {backgroundColor: 'white', color: 'black'}}
         id="textBox"  
         rows="7" 
         placeholder="Type or paste your text here..."
@@ -85,15 +97,17 @@ function TextForm(props) {
       <button className="mt-3 mx-3 btn btn-primary" onClick={handleLC}>lowercase</button>
       <button className="mt-3 btn btn-primary" onClick={handleCapitalizedCase}>Title Case</button>
       <button className="mt-3 mx-3 btn btn-primary" onClick={handleSentenceCase}>Sentence case</button>
+      <button className="mt-3 btn btn-primary" onClick={handleCopy}>Copy text</button>
+      <button className="mt-3 mx-3 btn btn-primary" onClick={RemExtraSpaces}>Remove extra spaces</button>
     </div>
-    <div className="container my-4">
+    <div className={`container my-4 text-${props.textColor}`}>
       <h2>Your text Summary</h2>
       <p>{text.length > 0 ? text.split(" ").length : "0"} word(s), {text.length} character(s)</p>
       <p>Number of sentence(s): {text.length > 0 ? text.split(". ").length : "0"}</p>
       <p>Text read time in seconds: {0.25 * (text.length > 0 ? text.split(" ").length : "0")}</p>
       <p>Text read time in minutes: {0.25 * (text.length > 0 ? text.split(" ").length : "0") / 60}</p>
       <h3>Preview of your Text</h3>
-      <p>{text}</p>
+      <p>{text.length > 0 ? text : "Enter some text in the above field to preview here..."}</p>
     </div>
     </>
   );

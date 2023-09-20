@@ -3,8 +3,9 @@ import React from 'react';
 import PropTypes from 'prop-types'
 
 function Navbar(props) {
+
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
   <div className="container-fluid">
     <a className="navbar-brand" href="/">{props.title}</a>
     {/* <a className="navbar-brand" href="/">{props.myDict.title}</a> */}
@@ -34,10 +35,15 @@ function Navbar(props) {
             <li><a className="dropdown-item" href="/">Embolden</a></li>
           </ul>
         </li>
+        
         <li className="nav-item">
           <a className="nav-link disabled" href='/' aria-disabled="true">Disabled</a>
         </li>
       </ul>
+      <div className={`form-check form-switch mx-3 text-${props.textColor}`}>
+      <input className="form-check-input"  onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckChecked"/>
+      <label className="form-check-label" htmlFor="flexSwitchCheckChecked">{props.switchText}</label>
+    </div>
       <form className="d-flex" role="search">
         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
         <button className="btn btn-outline-success" type="submit">Search</button>
