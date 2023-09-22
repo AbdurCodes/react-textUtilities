@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 
+
 function TextForm(props) {
   // array destructuring
   // The useState hook returns an array with two elements: the current state value and a function to update that value
@@ -13,10 +14,12 @@ function TextForm(props) {
 
   const handleUC = () => {
     setText(text.toUpperCase());
+    props.showALert("Text converted to UPPERCASE", "success");
   }
 
   const handleLC = () => {
     setText(text.toLowerCase());
+    props.showALert("Text converted to lowercase", "success");
   }
 
   const handleSentenceCase = () => {
@@ -29,16 +32,20 @@ function TextForm(props) {
       wordsList.unshift(firstWord)
       wholeText.push(wordsList.join(" "));
     setText(wholeText.join(". "));
+    props.showALert("Text converted to Sentence case", "success");
     }
+    
   }
 
   const handleCapitalizedCase = () => {
     const capitalizedCase = text.split(" ").map(e => e[0].toUpperCase() + e.slice(1).toLowerCase());
     setText(capitalizedCase.join(" "));
+    props.showALert("Text converted to Title Case", "success");
   }
   
   const handleClear = () => {
     setText("");
+    props.showALert("All text cleared", "success");
   }
 
   
@@ -47,6 +54,7 @@ function TextForm(props) {
       setCurrentIndex(currentIndex - 1);
       setText(history[currentIndex - 1]);
     }
+
   }
 
   const handleRedo = () => {
@@ -58,12 +66,14 @@ function TextForm(props) {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(text);
+    props.showALert("Text copied to clipboard", "success")
   }
 
   const RemExtraSpaces = () => {
     const regexPattern = /[ ]+/g;
     const newText = text.split(regexPattern);
     setText(newText.join(" "));
+    props.showALert("Extra spaces removed from text", "success")
   }
 
   const handleOChnage = (eventObject)=>{
@@ -84,7 +94,6 @@ function TextForm(props) {
       <button className="mx-2 my-2" onClick={handleUndo}>Undo</button>
       <button className="mx-2 my-2 redo-button" onClick={handleRedo}>Redo</button>
       <textarea
-      focused
       className="form-control"
         style={props.mode === 'dark' ? {backgroundColor: 'rgb(70 70 156)', color: 'white'} : {backgroundColor: 'white', color: 'black'}}
         id="textBox"  

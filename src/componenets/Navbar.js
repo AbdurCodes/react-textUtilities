@@ -3,6 +3,18 @@ import React from 'react';
 import PropTypes from 'prop-types'
 
 function Navbar(props) {
+const toggleBlue = () => {
+  document.body.style.backgroundColor = '#619da9';
+}
+const toggleRed = () => {
+  document.body.style.backgroundColor = '#b55987';
+}
+const toggleGreen = () => {
+  document.body.style.backgroundColor = '#52a37d';
+}
+
+
+
 
   return (
     <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
@@ -26,13 +38,12 @@ function Navbar(props) {
         </li>
         <li className="nav-item dropdown">
           <a className="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Utilities
+            Dark Flavors
           </a>
           <ul className="dropdown-menu">
-            <li><a className="dropdown-item" href="/">Make Uppercase</a></li>
-            <li><a className="dropdown-item" href="/">Make Lowercase</a></li>
-            <li><hr className="dropdown-divider" /></li>
-            <li><a className="dropdown-item" href="/">Embolden</a></li>
+            <li><button className="dropdown-item" onClick={toggleBlue}>Blue dark mode</button></li>
+            <li><button className="dropdown-item" onClick={toggleGreen}>Green dark mode</button></li>
+            <li><button className="dropdown-item" onClick={toggleRed}>Red dark mode</button></li>
           </ul>
         </li>
         
