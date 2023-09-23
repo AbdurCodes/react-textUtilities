@@ -34,7 +34,7 @@ export default function About(props) {
     <>
     
     <div className="container mt-5">
-    <h2 className={`text-${props.textColor}`} id="aboutUs">About Us</h2>
+    <h2 className={`text-${props.textColor}`}>About Us</h2>
       <div className="accordion" id="accordionExample" >
         <div className="accordion-item" style={changeTheme}>
           <h2 className="accordion-header">
