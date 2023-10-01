@@ -80,7 +80,7 @@ function App() {
           />
          
 
-          <Route path="/about" exact element={<About about={"About"} textColor={textColor} />}/>
+          <Route path="/about" exact element={<About about={"About"} toggleMode={toggleMode} textColor={textColor} />}/>
   
 
         </Routes>

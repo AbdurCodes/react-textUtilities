@@ -111,10 +111,10 @@ function TextForm(props) {
     </div>
     <div className={`container my-4 text-${props.textColor}`}>
       <h2>Your text Summary</h2>
-      <p>{text.length > 0 ? text.split(" ").length : "0"} word(s), {text.length} character(s)</p>
-      <p>Number of sentence(s): {text.length > 0 ? text.split(". ").length : "0"}</p>
-      <p>Text read time in seconds: {0.25 * (text.length > 0 ? text.split(" ").length : "0")}</p>
-      <p>Text read time in minutes: {0.25 * (text.length > 0 ? text.split(" ").length : "0") / 60}</p>
+      <p>{(text.length > 0) ? text.split(" ").filter((element)=>{return element.length !== 0}).length : "0"} word(s), {text.length} character(s)</p>
+      <p>Number of sentence(s): {text.length > 0 ? text.split(". ").filter((element)=>{return element.length !== 0}).length : "0"}</p>
+      <p>Text read time in seconds: {0.25 * (text.length > 0 ? text.split(" ").filter((element)=>{return element.length !== 0}).length : "0")}</p>
+      <p>Text read time in minutes: {0.25 * (text.length > 0 ? text.split(" ").filter((element)=>{return element.length !== 0}).length : "0") / 60}</p>
       <h3>Preview of your Text</h3>
       <p>{text.length > 0 ? text : "Enter some text in the above field to preview here..."}</p>
     </div>

@@ -1,32 +1,33 @@
-import React, { useState } from "react";
+import React from "react";
+// import { useState } from "react";
 
 export default function About(props) {
 
-  const [changeTheme, setTheme] = useState({
-    color: "black",
-    backgroundColor: "white"
-  });
+  // const [changeTheme, setTheme] = useState({
+  //   color: "black",
+  //   backgroundColor: "white"
+  // });
 
-  const [btnText, setBtnText] = useState("Enable dark theme");
+  // const [btnText, setBtnText] = useState("Enable dark theme");
 
-  const toggleTheme = () => {
-    if (changeTheme.color === "black" && changeTheme.backgroundColor === "white") {
-      setTheme({
-        color: "white",
-        backgroundColor: "black",
-        border: '1px solid white'
-      });
-      setBtnText("Enable light theme");
-    }
-    else{
-      setTheme({
-        color: "black",
-        backgroundColor: "white",
-        border: '1px solid black'
-      });
-      setBtnText("Enable dark theme");
-    }
-  }
+  // const toggleTheme = () => {
+  //   if (changeTheme.color === "black" && changeTheme.backgroundColor === "white") {
+  //     setTheme({
+  //       color: "white",
+  //       backgroundColor: "black",
+  //       border: '1px solid white'
+  //     });
+  //     setBtnText("Enable light theme");
+  //   }
+  //   else{
+  //     setTheme({
+  //       color: "black",
+  //       backgroundColor: "white",
+  //       border: '1px solid black'
+  //     });
+  //     setBtnText("Enable dark theme");
+  //   }
+  // }
 
 
 
@@ -36,10 +37,12 @@ export default function About(props) {
     <div className="container mt-5">
     <h2 className={`text-${props.textColor}`}>About Us</h2>
       <div className="accordion" id="accordionExample" >
-        <div className="accordion-item" style={changeTheme}>
+        <div className="accordion-item">
+        {/* <div className="accordion-item"> */}
           <h2 className="accordion-header">
             <button
-              style={changeTheme}
+              // style={changeTheme}
+              // style={props.toggleMode}
               className="accordion-button"
               type="button"
               data-bs-toggle="collapse"
@@ -47,7 +50,7 @@ export default function About(props) {
               aria-expanded="true"
               aria-controls="collapseOne"
             >
-              What this website is all about?
+              What this website is all about?{props.toggleMode}
             </button>
           </h2>
           <div
@@ -67,10 +70,9 @@ export default function About(props) {
             </div>
           </div>
         </div>
-        <div className="accordion-item" style={changeTheme}>
+        <div className="accordion-item" >
           <h2 className="accordion-header">
             <button
-            style={changeTheme}
               className="accordion-button collapsed"
               type="button"
               data-bs-toggle="collapse"
@@ -78,7 +80,7 @@ export default function About(props) {
               aria-expanded="false"
               aria-controls="collapseTwo"
             >
-              What is allowed and what is not?
+              What is allowed and what is not?{props.toggleMode}
             </button>
           </h2>
           <div
@@ -98,10 +100,9 @@ export default function About(props) {
             </div>
           </div>
         </div>
-        <div className="accordion-item" style={changeTheme}>
+        <div className="accordion-item">
           <h2 className="accordion-header">
             <button
-            style={changeTheme}
               className="accordion-button collapsed"
               type="button"
               data-bs-toggle="collapse"
@@ -109,7 +110,7 @@ export default function About(props) {
               aria-expanded="false"
               aria-controls="collapseThree"
             >
-              Are there pro-options available for clients?
+              Are there pro-options available for clients?{props.toggleMode}
             </button>
           </h2>
           <div
@@ -131,9 +132,9 @@ export default function About(props) {
         </div>
       </div>
     </div>
-    <div className="container">
+    {/* <div className="container">
       <button type="button" onClick={toggleTheme} className="btn btn-primary my-2 mb-5" >{btnText}</button>
-    </div>
+    </div> */}
     </>
   );
 }
