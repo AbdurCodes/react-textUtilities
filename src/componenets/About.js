@@ -29,20 +29,21 @@ export default function About(props) {
   //   }
   // }
 
-
+let changeTheme = {
+  color: props.mode === "light" ? 'black' : 'white',
+  backgroundColor: props.mode === "light" ? 'white' : 'black'
+}
 
   return (
     <>
     
-    <div className="container mt-5">
+    <div className="container mt-5" style={{border: '1px solid', borderColor: props.mode === "light" ? 'black' : 'white', padding: 15}}>
     <h2 className={`text-${props.textColor}`}>About Us</h2>
       <div className="accordion" id="accordionExample" >
-        <div className="accordion-item">
-        {/* <div className="accordion-item"> */}
+        <div className="accordion-item" style={changeTheme}>
           <h2 className="accordion-header">
             <button
-              // style={changeTheme}
-              // style={props.toggleMode}
+              style={{color: props.mode === "light" ? 'black' : 'white', backgroundColor: props.mode === "light" ? 'white' : '#4b4646'}}
               className="accordion-button"
               type="button"
               data-bs-toggle="collapse"
@@ -50,7 +51,7 @@ export default function About(props) {
               aria-expanded="true"
               aria-controls="collapseOne"
             >
-              What this website is all about?{props.toggleMode}
+              What this website is all about?
             </button>
           </h2>
           <div
@@ -70,9 +71,10 @@ export default function About(props) {
             </div>
           </div>
         </div>
-        <div className="accordion-item" >
+        <div className="accordion-item" style={changeTheme}>
           <h2 className="accordion-header">
             <button
+            style={{color: props.mode === "light" ? 'black' : 'white', backgroundColor: props.mode === "light" ? 'white' : '#4b4646'}}
               className="accordion-button collapsed"
               type="button"
               data-bs-toggle="collapse"
@@ -80,7 +82,7 @@ export default function About(props) {
               aria-expanded="false"
               aria-controls="collapseTwo"
             >
-              What is allowed and what is not?{props.toggleMode}
+              What is allowed and what is not?
             </button>
           </h2>
           <div
@@ -100,9 +102,10 @@ export default function About(props) {
             </div>
           </div>
         </div>
-        <div className="accordion-item">
+        <div className="accordion-item" style={changeTheme}>
           <h2 className="accordion-header">
             <button
+            style={{color: props.mode === "light" ? 'black' : 'white', backgroundColor: props.mode === "light" ? 'white' : '#4b4646'}}
               className="accordion-button collapsed"
               type="button"
               data-bs-toggle="collapse"
@@ -110,7 +113,7 @@ export default function About(props) {
               aria-expanded="false"
               aria-controls="collapseThree"
             >
-              Are there pro-options available for clients?{props.toggleMode}
+              Are there pro-options available for clients?
             </button>
           </h2>
           <div

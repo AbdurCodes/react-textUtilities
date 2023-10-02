@@ -102,12 +102,12 @@ function TextForm(props) {
         value={text} 
         onChange={handleOChnage} 
       ></textarea>
-      <button className="mt-3 btn btn-primary" onClick={handleUC}>UPPER CASE</button>
-      <button className="mt-3 mx-3 btn btn-primary" onClick={handleLC}>lowercase</button>
-      <button className="mt-3 btn btn-primary" onClick={handleCapitalizedCase}>Title Case</button>
-      <button className="mt-3 mx-3 btn btn-primary" onClick={handleSentenceCase}>Sentence case</button>
-      <button className="mt-3 btn btn-primary" onClick={handleCopy}>Copy text</button>
-      <button className="mt-3 mx-3 btn btn-primary" onClick={RemExtraSpaces}>Remove extra spaces</button>
+      <button disabled={text.length===0} className="mt-3 btn btn-primary" onClick={handleUC}>UPPER CASE</button>
+      <button disabled={text.length===0} className="mt-3 mx-3 btn btn-primary" onClick={handleLC}>lowercase</button>
+      <button disabled={text.length===0} className="mt-3 btn btn-primary" onClick={handleCapitalizedCase}>Title Case</button>
+      <button disabled={text.length===0} className="mt-3 mx-3 btn btn-primary" onClick={handleSentenceCase}>Sentence case</button>
+      <button disabled={text.length===0} className="mt-3 btn btn-primary" onClick={handleCopy}>Copy text</button>
+      <button disabled={text.length===0} className="mt-3 mx-3 btn btn-primary" onClick={RemExtraSpaces}>Remove extra spaces</button>
     </div>
     <div className={`container my-4 text-${props.textColor}`}>
       <h2>Your text Summary</h2>

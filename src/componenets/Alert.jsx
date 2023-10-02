@@ -8,8 +8,11 @@ export default function Alert(props) {
 
 
   return (
-    props.alert.msg && <div className={`alert alert-${props.alert.type}`} role="alert">
+    // height given to alert to decrease cls (cumulative layout shift)
+    <div style={{height: '50px'}}> 
+    {props.alert.msg && <div className={`alert alert-${props.alert.type}`} role="alert">
       {capitalizeWord(props.alert.type)} - {props.alert.msg}
+    </div>}
     </div>
   );
 }
