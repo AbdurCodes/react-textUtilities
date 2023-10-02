@@ -14,6 +14,8 @@ const toggleGreen = () => {
   document.body.style.backgroundColor = '#52a37d';
 }
 
+
+
   return (
     <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
   <div className="container-fluid">
@@ -49,6 +51,12 @@ const toggleGreen = () => {
           <a className="nav-link disabled" href='/' aria-disabled="true">Disabled</a>
         </li>
       </ul>
+
+      <div className="bg-primary mx-1" onClick={()=>props.bgPallete('primary')} style={{width: '30px', height: '30px', cursor: 'pointer'}}></div>
+      <div className="bg-success mx-1" onClick={()=>props.bgPallete('success')} style={{width: '30px', height: '30px', cursor: 'pointer'}}></div>
+      <div className="bg-danger mx-1" onClick={()=>props.bgPallete('danger')} style={{width: '30px', height: '30px', cursor: 'pointer'}}></div>
+      <div className="bg-warning mx-1" onClick={()=>props.bgPallete('warning')} style={{width: '30px', height: '30px', cursor: 'pointer'}}></div>
+
       <div className={`form-check form-switch mx-3 text-${props.textColor}`}>
       <input className="form-check-input"  onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckChecked"/>
       <label className="form-check-label" htmlFor="flexSwitchCheckChecked">{props.switchText}</label>

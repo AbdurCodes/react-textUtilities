@@ -29,6 +29,20 @@ function App() {
     }, 1500);
   };
 
+
+  const removeColorClass = () => {
+    document.body.classList.remove('bg-primary');
+    document.body.classList.remove('bg-success');
+    document.body.classList.remove('bg-danger');
+    document.body.classList.remove('bg-warning');
+  }
+
+  const bgPallete = (colorClass) => {
+    // console.log(colorClass);
+    removeColorClass();
+    document.body.classList.add('bg-'+ colorClass);
+  }
+
   const toggleMode = () => {
     if (mode === "light") {
       setmode("dark");
@@ -63,6 +77,7 @@ function App() {
           about={"About Us"}
           textColor={textColor}
           toggleMode={toggleMode}
+          bgPallete={bgPallete}
         />
         {/* <Navbar myDict={{title: 'TextUtilities', about: 'About Us'}} /> */}
         <Alert alert={alert} />
